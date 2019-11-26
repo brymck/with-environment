@@ -27,6 +27,12 @@ import org.slf4j.LoggerFactory;
 public class WithEnvironment {
   private static Logger logger = LoggerFactory.getLogger(WithEnvironment.class);
 
+  /**
+   * Run a block within an environment with variables overridden based on the provided {@link Map}.
+   *
+   * @param overrides a {@link Map} of overridden keys and values to apply to the environment
+   * @param block a lambda running within the overridden environment
+   */
   public static void withEnvironmentOverrides(
       @NotNull Map<@NotNull String, @Nullable String> overrides,
       @NotNull WithEnvironmentBlock block) {
