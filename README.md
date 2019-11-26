@@ -1,7 +1,7 @@
 with-environment
 ================
 
-[![CircleCI](https://circleci.com/gh/brymck/with-environment.svg?style=svg)](https://circleci.com/gh/brymck/with-environment)
+[![CircleCI](https://circleci.com/gh/brymck/with-environment.svg?style=shield)](https://circleci.com/gh/brymck/with-environment)
 [![codecov](https://codecov.io/gh/brymck/with-environment/branch/master/graph/badge.svg)](https://codecov.io/gh/brymck/with-environment)
 
 `with-environment` is a library that allows overriding the system environment and executing a block.
@@ -22,7 +22,7 @@ Include this in your POM:
 </dependency>
 ```
 
-And use it as so in Java:
+And use it as s o in Java:
 
 ```java
 Map<String, String> overrides = new HashMap();
