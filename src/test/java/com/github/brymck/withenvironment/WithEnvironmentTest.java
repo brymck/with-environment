@@ -95,4 +95,34 @@ class WithEnvironmentTest {
     assertNull(System.getenv("FOO"));
     assertNull(System.getenv("HOGE"));
   }
+
+  @Test
+  @DisplayName("allows layers of overrides with the same key")
+  void allowsLayersOfOverridesWithTheSameKey() {
+    HashMap<String, String> fooOverride = new HashMap<>();
+    fooOverride.put("FOO", "foo");
+    HashMap<String, String> barOverride = new HashMap<>();
+    barOverride.put("FOO", "bar");
+    assertNull(System.getenv("FOO"));
+    withEnvironmentOverrides(
+        fooOverride,
+        () -> {
+          assertEquals("foo", System.getenv("FOO"));
+          withEnvironmentOverrides(
+              barOverride,
+              () -> {
+                assertEquals("bar", System.getenv("FOO"));
+              });
+          assertEquals("foo", System.getenv("FOO"));
+        });
+    assertNull(System.getenv("FOO"));
+  }
+
+  @Test
+  @DisplayName("instantiates an instance of WithEnvironment")
+  void instantiatesAnInstanceOfWithEndvironment() {
+    // This test is pretty meaningless because the methods are all static, but it's included for
+    // code coverage purposes
+    assertDoesNotThrow(WithEnvironment::new);
+  }
 }
