@@ -25,7 +25,7 @@ Include this in your POM:
 And use it as s o in Java:
 
 ```java
-Map<String, String> overrides = new HashMap();
+Map<String, String> overrides = new HashMap<>();
 overrides.put("FOO", "bar");
 WithEnvironment.withEnvironmentOverrides(overrides, () -> {
   String foo = System.getenv("FOO");
